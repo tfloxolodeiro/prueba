@@ -21,11 +21,10 @@ scale = Vector2( 0.1, 0.1 )
 collision_mask = 3
 
 [node name="BichoTimer" type="Timer" parent="."]
-wait_time = 0.5
 autostart = true
 
 [node name="StartPosition" type="Position2D" parent="."]
-position = Vector2( 386, 335 )
+position = Vector2( 474, 259 )
 
 [node name="BichoPath" type="Path2D" parent="."]
 position = Vector2( 79.3802, 76.9368 )
