@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Bicho.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mapa.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Curve2D" id=1]
+bake_interval = 0.01
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 800, 0, 0, 0, 0, 0, 795.375, 599.228, 0, 0, 0, 0, -1.71443, 602.456, 0, 0, 0, 0, -7.88147, -1.21095, 0, 0, 0, 0, 800, 0 )
+}
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+bicho_scene = ExtResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 235, 340 )
+scale = Vector2( 0.1, 0.1 )
+collision_mask = 3
+
+[node name="BichoTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 386, 335 )
+
+[node name="BichoPath" type="Path2D" parent="."]
+position = Vector2( 79.3802, 76.9368 )
+scale = Vector2( 0.809525, 0.773605 )
+curve = SubResource( 1 )
+
+[node name="BichoSpawnLocation" type="PathFollow2D" parent="BichoPath"]
+position = Vector2( 800, 0 )
+rotation = 1.57851
+
+[node name="Node2D" parent="." instance=ExtResource( 4 )]
+z_index = -1
+
+[connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="timeout" from="BichoTimer" to="." method="_on_BichoTimer_timeout"]
