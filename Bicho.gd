@@ -8,7 +8,7 @@ var player
 
 func init(_player):
 	player = _player
-	resize()
+	scale = size()
 
 func direction_to_move():
 	var direction_to_move = player.position - position
@@ -17,9 +17,10 @@ func direction_to_move():
 func _physics_process(_delta):
 	var instant_velocity = direction_to_move() * speed()
 	velocity = move_and_slide(instant_velocity)
+	scale = size()
 
-func resize():
-	scale = baseScale * health
+func size():
+	return baseScale * health
 
 func speed(): 
 	if health != 0: #Una vez exploto por entrar aca con health 0 xd
@@ -31,5 +32,3 @@ func hit():
 	health -= 1
 	if health == 0:
 		queue_free()
-	else:
-		resize()
