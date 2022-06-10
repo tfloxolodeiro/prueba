@@ -1,6 +1,7 @@
 extends Node
 
 export(PackedScene) var bicho_scene
+export(PackedScene) var shooter_scene
 
 func _ready():
 	randomize()
@@ -8,7 +9,9 @@ func _ready():
 
 
 func _on_BichoTimer_timeout():
-	var mob = bicho_scene.instance()
+	var mob_scenes = [bicho_scene, shooter_scene] #Para probar nomas, TODO: Hacer esto de verdad
+	var random_mob_scene =  mob_scenes[randi() % mob_scenes.size()]
+	var mob = random_mob_scene.instance()
 
 	# Choose a random location on Path2D.
 	var mob_spawn_location = get_node("BichoPath/BichoSpawnLocation")

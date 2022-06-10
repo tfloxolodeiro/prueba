@@ -8,7 +8,7 @@ var velocity = Vector2()
 	
 func _ready():
 	var gun = gun_scene.instance()
-	gun.init(Vector2(), $PlayerMouse)
+	gun.init(Vector2(), $PlayerGun)
 	add_child(gun)
 	
 func get_input():

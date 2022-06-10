@@ -10,12 +10,15 @@ func init(_position, _type):
 func should_shoot():
 	return type.should_shoot() && $ShootingCooldown.get_time_left() == 0
 
-func aim_rotation():
-	return (type.aim_position() - global_position).angle()
+func aim_direction():
+	return (type.aim_position() - global_position).normalized()
+
+func bullet_initial_position():
+	return global_position + aim_direction() * 50
 
 func shoot():
 	var bullet = bullet_scene.instance()
-	bullet.init(global_position, aim_rotation())
+	bullet.init(bullet_initial_position(), aim_direction())
 	find_parent("Main").add_child(bullet)
 	$ShootingCooldown.start()
 

@@ -4,9 +4,9 @@ var baseScale = Vector2(baseScaleFactor,baseScaleFactor)
 var speed = 750
 var velocity = Vector2()
 
-func init(pos, dir):
-	rotation = dir
-	position = pos
+func init(_position, direction):
+	rotation = direction.angle()
+	position = _position
 	scale = baseScale
 	velocity = Vector2(speed, 0).rotated(rotation)
 

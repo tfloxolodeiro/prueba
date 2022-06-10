@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Shooter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://mapa.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Bicho.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Curve2D" id=1]
 bake_interval = 0.01
@@ -13,7 +14,8 @@ _data = {
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
-bicho_scene = ExtResource( 2 )
+bicho_scene = ExtResource( 5 )
+shooter_scene = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 233, 338 )

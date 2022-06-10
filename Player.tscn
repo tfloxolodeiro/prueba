@@ -21,4 +21,4 @@ texture = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="PlayerMouse" parent="." instance=ExtResource( 4 )]
+[node name="PlayerGun" parent="." instance=ExtResource( 4 )]
