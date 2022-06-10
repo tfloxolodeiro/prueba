@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 12.1655
 
-[node name="Node2D" type="Area2D"]
+[node name="Gun" type="Area2D"]
 position = Vector2( 231, 135 )
 script = ExtResource( 2 )
 bullet_scene = ExtResource( 3 )

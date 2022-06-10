@@ -1,9 +1,15 @@
 extends KinematicBody2D
+export(PackedScene) var gun_scene
 
 signal hit
 
 export var speed = 400
 var velocity = Vector2()
+	
+func _ready():
+	var gun = gun_scene.instance()
+	gun.init(Vector2(), $PlayerMouse)
+	add_child(gun)
 	
 func get_input():
 	velocity = Vector2()

@@ -1,21 +1,26 @@
 extends Area2D
 
 export(PackedScene) var bullet_scene
+var type 
+
+func init(_position, _type):
+	type = _type
+	position = _position
 
 func should_shoot():
-	return Input.is_action_pressed("shoot") && $ShootingCooldown.get_time_left() == 0
+	return type.should_shoot() && $ShootingCooldown.get_time_left() == 0
 
 func aim_rotation():
-	return (get_global_mouse_position() - global_position).angle()
+	return (type.aim_position() - global_position).angle()
 
 func shoot():
 	var bullet = bullet_scene.instance()
 	bullet.init(global_position, aim_rotation())
-	owner.owner.add_child(bullet)
+	find_parent("Main").add_child(bullet)
 	$ShootingCooldown.start()
 
 func _process(delta):
-	look_at(get_global_mouse_position())
+	look_at(type.aim_position())
 	
 	if should_shoot():
 		shoot()

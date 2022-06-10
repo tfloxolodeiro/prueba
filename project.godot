@@ -14,6 +14,10 @@ config/name="prueba"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Mouse="*res://Mouse.tscn"
+
 [display]
 
 window/size/width=800

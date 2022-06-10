@@ -10,14 +10,20 @@ func init(_player):
 	player = _player
 	scale = size()
 
+func desired_position():
+	return player.position
+
 func direction_to_move():
-	var direction_to_move = player.position - position
+	var direction_to_move = desired_position() - position
 	return direction_to_move.normalized()
 
 func _physics_process(_delta):
+	move()
+	scale = size()
+
+func move():
 	var instant_velocity = direction_to_move() * speed()
 	velocity = move_and_slide(instant_velocity)
-	scale = size()
 
 func size():
 	return baseScale * health
